@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SaffronGe — Premium Saffron & Orange Products</title>
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fffaf0;color:#222}
+    header{background:#ff8c00;color:#fff;padding:18px;text-align:center;font-size:22px;font-weight:700;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+    .container{max-width:1000px;margin:20px auto;padding:0 16px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+
+    .card{
+      background:#fff;border-radius:12px;padding:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      display:flex;flex-direction:column;gap:10px;
+      transition:0.3s;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 28px rgba(0,0,0,0.15);
+    }
+
+    .card img{
+      width:100%;height:230px;object-fit:cover;border-radius:10px;
+    }
+
+    .title{font-weight:700;color:#cc6600;font-size:17px;margin:0}
+    .caption{color:#555;font-size:14px;margin:0}
+
+    .price {
+      font-size:18px;
+      font-weight:700;
+      color:#ff5500;
+    }
+
+    .actions{margin-top:auto;display:flex;gap:10px;align-items:center}
+
+    .btn{
+      background:#25D366;color:white;padding:8px 12px;
+      border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;
+    }
+
+    .insta{
+      background:#E1306C;color:white;padding:8px 12px;
+      border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;
+    }
+
+    footer{
+      text-align:center;padding:20px;margin-top:30px;
+      color:#fff;background:linear-gradient(90deg,#e67300,#ff8c00);font-size:14px
+    }
+
+    @media(max-width:420px){ .card img{height:170px} }
+  </style>
+</head>
+
+<body>
+
+<header>SaffronGe — Saffron & Orange Skincare Collection</header>
+
+<div class="container">
+
+  <p style="color:#444;font-size:14px">
+    नीचे आपके सभी products Instagram style में दिख रहे हैं।  
+    Future में images बदलनी हों तो सिर्फ नीचे वाले <b>products array</b> को edit कर देना।
+  </p>
+
+  <div id="gallery" class="grid"></div>
+
+</div>
+
+<footer>© 2025 SaffronGe — All Rights Reserved</footer>
+
+<script>
+  const whatsappNumber = "918788132369";
+
+  // ================== EDIT THIS PRODUCT LIST ==================
+  // Add unlimited products here (title, caption, price, image)
+  const products = [
+    {
+      img: "https://via.placeholder.com/800x800.png?text=Saffron+Face+Wash",
+      title: "Saffron Face Wash",
+      caption: "Brightening facewash with pure saffron & orange extract.",
+      price: "₹199"
+    },
+    {
+      img: "https://via.placeholder.com/800x800.png?text=Saffron+Scrub",
+      title: "Saffron Scrub",
+      caption: "Gentle exfoliation for glowing skin.",
+      price: "₹249"
+    },
+    {
+      img: "https://via.placeholder.com/800x800.png?text=Saffron+Soap",
+      title: "Saffron Soap",
+      caption: "Handmade saffron & orange soap for soft skin.",
+      price: "₹149"
+    }
+  ];
+  // ===============================================================
+
+  const gallery = document.getElementById('gallery');
+
+  products.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'card';
+
+    el.innerHTML = `
+      <img src="${item.img}" alt="${escapeHtml(item.title)}" loading="lazy" />
+      <div>
+        <div class="title">${escapeHtml(item.title)}</div>
+        <div class="caption">${escapeHtml(item.caption)}</div>
+        <div class="price">${escapeHtml(item.price)}</div>
+      </div>
+
+      <div class="actions">
+
+        <a class="btn" href="https://wa.me/${whatsappNumber}?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(item.title)}"
+        target="_blank" rel="noopener">
+        Buy Now
+        </a>
+
+        <a class="insta" href="https://www.instagram.com/_saffronge_/" target="_blank" rel="noopener">
+          Profile
+        </a>
+
+      </div>
+    `;
+
+    gallery.appendChild(el);
+  });
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"]/g, c => (
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]
+    ));
+  }
+</script>
+
+</body>
+</html>
